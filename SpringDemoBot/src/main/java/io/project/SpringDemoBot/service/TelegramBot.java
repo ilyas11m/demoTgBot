@@ -53,6 +53,12 @@ public class TelegramBot extends TelegramLongPollingBot {
             String messageText = update.getMessage().getText();
             long chatId = update.getMessage().getChatId();
             switch (messageText) {
+                case "нет":
+                    sendMessage(chatId, "Не ври, сегодня ты не ел кексики");
+                    break;
+                case "ok":
+                    sendMessage(chatId, "Fine i'll do it myself");
+                    break;
                 case "/help":
                     sendMessage(chatId, HELP_TEXT);
                     break;
@@ -70,7 +76,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
     private void startCommandReceived(long chatId, String name) {
-        String answer = "Hi, " + name + ", nice to meet you!";
+        String answer = "Привет, пользователь " + name + ", завтракал сегодня ? Напиши да/нет";
         sendMessage(chatId, answer);
 
     }
